@@ -1,18 +1,8 @@
-import {
-  Box,
-  Checkbox,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  Tab,
-  Tabs,
-} from "@mui/material";
+import { Box, List, Tab, Tabs } from "@mui/material";
 import { useState } from "react";
 import { CustomTabPanel } from "./CustomTabPanel";
-import { ActiveItem } from "./ActiveItem";
-import { CompletedItem } from "./CompletedItem";
+import { ActiveTodo } from "./ActiveTodo";
+import { CompletedTodo } from "./CompletedTodo";
 
 interface Props {
   todos: Todo[];
@@ -30,6 +20,13 @@ export function TodoTabs({ todos, setTodos }: Props) {
     const newTodos = [...todos];
     const i = newTodos.findIndex((item) => item.id === todo.id);
     newTodos[i] = { ...todo, completed: !todo.completed };
+    setTodos(newTodos);
+  }
+
+  function deleteTodo(id: string) {
+    const newTodos = [...todos];
+    const i = newTodos.findIndex((item) => item.id === id);
+    newTodos.splice(i);
     setTodos(newTodos);
   }
 
@@ -51,16 +48,18 @@ export function TodoTabs({ todos, setTodos }: Props) {
         <List dense sx={{ width: "100%", bgcolor: "background.paper" }}>
           {todos.map((todo) =>
             todo.completed ? (
-              <CompletedItem
+              <CompletedTodo
                 key={todo.id}
                 todo={todo}
                 toggleCompleted={toggleCompleted}
+                deleteTodo={deleteTodo}
               />
             ) : (
-              <ActiveItem
+              <ActiveTodo
                 key={todo.id}
                 todo={todo}
                 toggleCompleted={toggleCompleted}
+                deleteTodo={deleteTodo}
               />
             )
           )}
@@ -73,10 +72,11 @@ export function TodoTabs({ todos, setTodos }: Props) {
         >
           {todos.map((todo) =>
             todo.completed ? null : (
-              <ActiveItem
+              <ActiveTodo
                 key={todo.id}
                 todo={todo}
                 toggleCompleted={toggleCompleted}
+                deleteTodo={deleteTodo}
               />
             )
           )}
@@ -89,10 +89,11 @@ export function TodoTabs({ todos, setTodos }: Props) {
         >
           {todos.map((todo) =>
             todo.completed ? (
-              <CompletedItem
+              <CompletedTodo
                 key={todo.id}
                 todo={todo}
                 toggleCompleted={toggleCompleted}
+                deleteTodo={deleteTodo}
               />
             ) : null
           )}
