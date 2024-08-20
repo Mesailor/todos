@@ -1,4 +1,4 @@
-# Material UI - Vite.js in TypeScript example
+# Todo app as a test task
 
 ## How to use
 
