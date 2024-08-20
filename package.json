@@ -1,0 +1,28 @@
+{
+  "name": "todos-mindbox",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "start": "vite preview"
+  },
+  "dependencies": {
+    "@emotion/react": "latest",
+    "@emotion/styled": "latest",
+    "@mui/icons-material": "next",
+    "@mui/material": "next",
+    "react": "latest",
+    "react-dom": "latest",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@types/uuid": "^10.0.0",
+    "@vitejs/plugin-react": "latest",
+    "typescript": "latest",
+    "vite": "latest"
+  }
+}
