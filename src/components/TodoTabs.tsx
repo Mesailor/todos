@@ -26,7 +26,7 @@ export function TodoTabs({ todos, setTodos }: Props) {
   function deleteTodo(id: string) {
     const newTodos = [...todos];
     const i = newTodos.findIndex((item) => item.id === id);
-    newTodos.splice(i);
+    newTodos.splice(i, 1);
     setTodos(newTodos);
   }
 
@@ -66,10 +66,7 @@ export function TodoTabs({ todos, setTodos }: Props) {
         </List>
       </CustomTabPanel>
       <CustomTabPanel value={activeTab} index={1}>
-        <List
-          dense
-          sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
-        >
+        <List dense sx={{ width: "100%", bgcolor: "background.paper" }}>
           {todos.map((todo) =>
             todo.completed ? null : (
               <ActiveTodo
@@ -83,10 +80,7 @@ export function TodoTabs({ todos, setTodos }: Props) {
         </List>
       </CustomTabPanel>
       <CustomTabPanel value={activeTab} index={2}>
-        <List
-          dense
-          sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
-        >
+        <List dense sx={{ width: "100%", bgcolor: "background.paper" }}>
           {todos.map((todo) =>
             todo.completed ? (
               <CompletedTodo

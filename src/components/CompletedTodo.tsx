@@ -30,7 +30,7 @@ export function CompletedTodo({ todo, toggleCompleted, deleteTodo }: Props) {
       disablePadding
     >
       <ListItemButton
-        role={undefined}
+        role={"complete-button"}
         onClick={() => toggleCompleted(todo)}
         dense
       >
